@@ -1,0 +1,22 @@
+pipeline {
+    agent CD 
+    stages {
+        stage('Create File') {
+            steps {
+                script {
+                    // Define the file name and content
+                    def fileName = 'example.txt'
+                    def fileContent = 'This is an example file created by Jenkins.'
+
+                    // Create the file with the specified content
+                    sh """
+                    echo "${fileContent}" > ${fileName}
+                    """
+
+                    // Optional: Print a message to confirm creation
+                    echo "File '${fileName}' has been created."
+                }
+            }
+        }
+    }
+}
